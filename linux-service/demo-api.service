@@ -1,0 +1,15 @@
+[Unit]
+Description="Demo API"
+
+[Service]
+ExecStart=/usr/share/dotnet/dotnet demo-api.dll --urls=http://::80/
+WorkingDirectory=/home/ssm-user/dist/api/
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=DemoApi
+Environment=DOTNET_ENV=production PORT=80
+
+[Install]
+WantedBy=multi-user.target
